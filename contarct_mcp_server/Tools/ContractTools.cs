@@ -45,8 +45,8 @@ public class ContractTools
     [McpServerTool(Name = "get_contract_structure")]
     [Description("Returns the expected sections, ordering, and required status for a specific contract template. Use this when checking whether a contract follows the company's expected document structure.")]
     public async Task<string> GetContractStructure(
-        [Description("The unique ID of the contract template to retrieve sections for.")] int templateId,
-        CancellationToken cancellationToken)
+        [Description("The unique ID of the contract template to retrieve sections for. Defaults to 1.")] int templateId = 1,
+        CancellationToken cancellationToken = default)
     {
         _logger.LogInformation("MCP tool get_contract_structure called for TemplateId={TemplateId}", templateId);
 
@@ -61,8 +61,8 @@ public class ContractTools
     [McpServerTool(Name = "get_required_clauses")]
     [Description("Returns the clauses that the company requires for a specific contract template. Use this when checking whether a contract contains all company-required clauses.")]
     public async Task<string> GetRequiredClauses(
-        [Description("The unique ID of the contract template to retrieve required clauses for.")] int templateId,
-        CancellationToken cancellationToken)
+        [Description("The unique ID of the contract template to retrieve required clauses for. Defaults to 1.")] int templateId = 1,
+        CancellationToken cancellationToken = default)
     {
         _logger.LogInformation("MCP tool get_required_clauses called for TemplateId={TemplateId}", templateId);
 
@@ -77,9 +77,9 @@ public class ContractTools
     [McpServerTool(Name = "get_clause_requirement")]
     [Description("Returns the detailed company-defined requirements for a specific clause. Use this when evaluating whether the content of a clause satisfies the company's requirements.")]
     public async Task<string> GetClauseRequirement(
-        [Description("The unique ID of the contract template.")] int templateId,
-        [Description("The clause code identifier (e.g. CONFIDENTIALITY, TERMINATION).")] string clauseCode,
-        CancellationToken cancellationToken)
+        [Description("The unique ID of the contract template. Defaults to 1.")] int templateId = 1,
+        [Description("The clause code identifier (e.g. CONFIDENTIALITY, TERMINATION). Defaults to TERMINATION.")] string clauseCode = "TERMINATION",
+        CancellationToken cancellationToken = default)
     {
         _logger.LogInformation("MCP tool get_clause_requirement called for TemplateId={TemplateId}, ClauseCode={ClauseCode}",
             templateId, clauseCode);

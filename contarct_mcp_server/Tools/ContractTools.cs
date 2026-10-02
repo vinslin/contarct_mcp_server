@@ -43,8 +43,8 @@ public class ContractTools
     }
 
     [McpServerTool(Name = "get_contract_structure")]
-    [Description("Returns the expected sections, ordering, and required status for a specific contract template. Use this when checking whether a contract follows the company's expected document structure.")]
-    public async Task<string> GetContractStructure(
+    [Description("Returns the expected sections, ordering, and required status for a specific contract template by default it returns latest tempate one. Use this when checking whether a contract follows the company's expected document structure.")]
+    public async Task<string> GetLatestContractStructure(
         [Description("The unique ID of the contract template to retrieve sections for. Defaults to 1.")] int templateId = 1,
         CancellationToken cancellationToken = default)
     {
@@ -59,8 +59,8 @@ public class ContractTools
     }
 
     [McpServerTool(Name = "get_required_clauses")]
-    [Description("Returns the clauses that the company requires for a specific contract template. Use this when checking whether a contract contains all company-required clauses.")]
-    public async Task<string> GetRequiredClauses(
+    [Description("Returns the clauses that the company requires for a specific contract template by default it returns latest template one. Use this when checking whether a contract contains all company-required clauses.")]
+    public async Task<string> GetLatestContractRequiredClauses(
         [Description("The unique ID of the contract template to retrieve required clauses for. Defaults to 1.")] int templateId = 1,
         CancellationToken cancellationToken = default)
     {
